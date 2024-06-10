@@ -7,6 +7,7 @@ from io import BytesIO
 from openpyxl import Workbook
 from openpyxl.drawing.image import Image
 import matplotlib.pyplot as plt
+import os
 
 st.set_page_config(page_title='Data Manager', page_icon="images/png-transparent-product-lifecycle-aras-corp-product-data-management-computer-software-china-cloud-miscellaneous-logo-engineering.png", layout="wide", initial_sidebar_state='expanded')
 
@@ -39,7 +40,9 @@ def convert_df_to_excel(dataframe, table_chart_path, pie_chart_path):
         if 'Sheet' in writer.book.sheetnames:
             default_sheet = writer.book['Sheet']
             writer.book.remove(default_sheet)
-        
+    
+    os.remove(table_chart_path)
+    os.remove(pie_chart_path)
     processed_data = output.getvalue()
     return processed_data
 
