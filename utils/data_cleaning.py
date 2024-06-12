@@ -15,7 +15,7 @@ class DataClean:
         self.df = self.df[self.df['Case Assignee'].isin(Assignees.ASSIGNESS)]
         
         # Split 'Case for SLA Result' into 'Case#' and 'Case Subject'
-        self.df[['Case#', 'Case Subject']] = self.df['Case for SLA Result'].str.split(': ', expand=True)
+        self.df[['Case#', 'Case Subject']] = self.df['Case for SLA Result'].str.split(':', n=1, expand=True)
         subset_df = self.df[['Case#', 'Case Subject', 'Case Status', 'Service Team', 'Case Assignee', 'Case Creation Date']]
         subset_df.reset_index(drop=True, inplace=True)
         return subset_df

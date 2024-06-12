@@ -53,8 +53,10 @@ uploaded_file = st.sidebar.file_uploader("Choose an Excel file", type=["xlsx"])
 if uploaded_file:
     # Read and display the dataframe
     df = pd.read_excel(uploaded_file)
+    df.index = range(1, len(df) + 1)
+
     st.subheader('Preview of Uploaded Data')
-    st.dataframe(df.head())
+    st.dataframe(df)
 
     # Create an instance of DataClean and process the data
     cleaned_data = DataClean(df).process_clean()
