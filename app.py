@@ -61,6 +61,7 @@ if uploaded_file:
     # Create an instance of DataClean and process the data
     cleaned_data = DataClean(df).process_clean()
     processed_data = DataProcessing(cleaned_data).process_data()
+    processed_data.index = range(1, len(processed_data) + 1)
     visualizations = DataVisuals(data=df, processed_data=processed_data)
     visualizations.process_visuals()
 

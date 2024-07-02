@@ -25,7 +25,7 @@ class DataVisuals:
         average_aging = df.groupby('Service Team')['Aging (days)'].mean().reset_index()
         average_aging.columns = ['Team', 'Average Aging']
 
-        average_aging['Average Aging'] = average_aging['Average Aging'].round(2)
+        average_aging['Average Aging'] = average_aging['Average Aging'].round()
 
         # Merge the counts and average aging dataframes
         service_team_summary = pd.merge(service_team_counts, average_aging, on='Team')
